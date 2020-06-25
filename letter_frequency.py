@@ -1,23 +1,32 @@
 import matplotlib.pyplot as plt
-import numpy
+
+a2z = "abcdefghijklmnopqrstuvwxyz"
+
 
 def preprocess(s):
     return " ".join(lines for lines in s)
 
+def frequency(s):
+    return [s.lower().count(each_letter) for each_letter in a2z]
+
+def graph(x, y):
+    plt.plot(x, y)
+    plt.ylabel('frequency')
+    plt.xlabel('letters')
+    plt.title('frequency of each letter')
+    return plt.show()
+
+def barchart(x, y):
+    plt.bar(x, y, color = "red")
+    plt.ylabel('frequency')
+    plt.xlabel('letters')
+    plt.title('frequency of each letter')
+    return plt.show()
+
 
 s = preprocess(open('warandpeace.txt'))
 
+xcomp = [letters for letters in a2z]
 
-a2z = "abcdefghijklmnopqrstuvwxyz"
-objects = [letters for letters in a2z]
-frequency = [s.lower().count(each_letter) for each_letter in a2z]
-y_pos = numpy.arange(len(objects))
-
-plt.bar(y_pos, frequency, align = 'center', alpha = 0.5)
-plt.xticks(y_pos, objects)
-plt.ylabel('frequency')
-plt.xlabel('letters')
-plt.title('frequency of each letter')
-
-plt.show()
-print(frequency)
+barchart(xcomp, frequency(s))
+graph(xcomp, frequency(s))
