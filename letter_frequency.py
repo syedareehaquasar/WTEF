@@ -1,7 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy
 
-s = input()
+def preprocess(s):
+    return " ".join(lines for lines in s)
+
+
+s = preprocess(open('warandpeace.txt'))
+
 
 a2z = "abcdefghijklmnopqrstuvwxyz"
 objects = [letters for letters in a2z]
@@ -15,3 +20,4 @@ plt.xlabel('letters')
 plt.title('frequency of each letter')
 
 plt.show()
+print(frequency)
