@@ -27,7 +27,7 @@ string LinkedList::Union(LinkedList list1, LinkedList list2) {
     }
     mainPtr = mainPtr -> nextElement;
   }
-  
+
   mainPtr = list1.head;
   while (mainPtr) {
       output += to_string(mainPtr -> data);
@@ -41,7 +41,23 @@ string LinkedList::Union(LinkedList list1, LinkedList list2) {
 
 string LinkedList::Intersection(LinkedList list1, LinkedList list2) {
   Node* l1 = list1.head;
+  Node* refPtr = list1.head;
   string output = "";
+  
+  while (l1 -> nextElement) {
+    refPtr = l1;
+    while (refPtr -> nextElement) {
+        if (refPtr -> nextElement -> data == l1 -> data) {
+            refPtr -> nextElement = refPtr -> nextElement -> nextElement;
+        }
+        else {
+            refPtr = refPtr -> nextElement;
+        }
+    }
+    l1 = l1 -> nextElement;
+  }
+  
+  l1 = list1.head;
   
   while (l1) {
       Node* l2 = list2.head;
