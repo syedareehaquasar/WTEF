@@ -4,7 +4,7 @@
 using namespace std;
 
 myQueue reverseK(myQueue queue, int k) {
-    if (queue.isEmpty() or k == 0) {
+    if (queue.isEmpty() or k <= 0) {
         return queue;
     }
     
@@ -43,8 +43,9 @@ int main(){
     mQ.enqueue(9);
     mQ.enqueue(10);
     
-    mQ=reverseK(mQ,5);
+    mQ=reverseK(mQ, 5);
     
     mQ.showqueue(); //show queue prepended in the hidden code
+    
     return 0;
-}// Your code here
+}
