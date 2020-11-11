@@ -4,9 +4,7 @@ int findHeight(Node * rootNode) {
     if (!rootNode) {
         return -1;
     }
-    int leftHeight = findHeight(rootNode -> leftChild);
-	int rightHeight = findHeight(rootNode -> rightChild);
-	return max(leftHeight, rightHeight) + 1;
+	return max(findHeight(rootNode -> leftChild), findHeight(rootNode -> rightChild)) + 1;
 }
 
 int main() {
