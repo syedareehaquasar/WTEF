@@ -6,16 +6,20 @@ string findAncestors(Node *rootNode, int k) {
     }
     string result = "";
     Node* currentNode = rootNode;
-    while (currentNode -> value != k || currentNode != NULL) {
-        result = to_string(currentNode -> value) + ", " + result;
-        if (currentNode -> value < k) {
+    while (currentNode) {
+        if (currentNode -> value == k) {
+            result += " -> ancestors of " + to_string(k);
+            return result;
+        }
+        result = to_string(currentNode -> value) + " " + result;
+        if (currentNode -> value > k) {
             currentNode = currentNode -> leftChild;
         }
         else {
             currentNode = currentNode -> rightChild;
         }
     }
-    return result;
+    return "Value does not exists in the tree";
 }
 
 int main()
